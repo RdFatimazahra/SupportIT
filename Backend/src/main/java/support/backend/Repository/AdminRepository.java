@@ -1,4 +1,8 @@
 package support.backend.Repository;
 
-public interface AdminRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import support.backend.Model.Admin;
+
+public interface AdminRepository extends JpaRepository<Admin, Integer> {
+
 }

@@ -1,4 +1,7 @@
 package support.backend.Repository;
 
-public interface TechnicienRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import support.backend.Model.Technicien;
+
+public interface TechnicienRepository extends JpaRepository<Technicien, Long> {
 }
