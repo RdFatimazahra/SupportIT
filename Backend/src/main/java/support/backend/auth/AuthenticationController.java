@@ -14,11 +14,19 @@ public class AuthenticationController {
 
     private final AuthenticationService authenticationService;
 
-    @PostMapping("/register")
+    @PostMapping("/Admin/register")
     public ResponseEntity<AuthenticationResponse>register(
             @RequestBody RegisterRequest request
     ) {
         return ResponseEntity.ok(authenticationService.register(request));
+    }
+
+
+    @PostMapping("/Admin/registerTech")
+    public ResponseEntity<AuthenticationResponse>registerTech(
+            @RequestBody RegisterRequest request
+    ) {
+        return ResponseEntity.ok(authenticationService.registerTech(request));
     }
 
     @PostMapping("/registerAdmin")

@@ -25,12 +25,30 @@ public class AuthenticationService {
 
     private final AuthenticationManager authenticationManager;
 
+    //RegisterUser :
     public AuthenticationResponse register(RegisterRequest request) {
         var user = Utilisateur.builder()
                 .nom(request.getNom())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
+                .build();
+        userRepository.save(user);
+        var jwtToken = jwtService.generateToken(user);
+        return AuthenticationResponse.builder()
+                .token(jwtToken)
+                .build();
+
+
+    }
+
+    //RegisterTechnicien :
+    public AuthenticationResponse registerTech(RegisterRequest request) {
+        var user = Utilisateur.builder()
+                .nom(request.getNom())
+                .email(request.getEmail())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .role(Role.TECHNICIEN)
                 .build();
         userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
