@@ -17,13 +17,11 @@ public class Equipement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idEquipement;
-    private String nome;
+    private int idEquipement;
+    private String nom;
     private String  description;
+    private String image;
     private EtatEquipement etat;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "equipement")
-    private List<Panne> pannes;
 
 }

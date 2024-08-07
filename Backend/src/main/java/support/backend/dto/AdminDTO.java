@@ -1,4 +1,4 @@
-package support.backend.DTO;
+package support.backend.dto;
 
 public class AdminDTO {
 }

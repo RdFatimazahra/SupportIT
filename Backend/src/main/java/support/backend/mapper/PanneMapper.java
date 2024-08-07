@@ -1,2 +1,4 @@
-package support.backend.mapper;public class PanneMapper {
+package support.backend.mapper;
+
+public class PanneMapper {
 }

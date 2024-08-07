@@ -15,12 +15,9 @@ public class Panne {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPanne;
+    private int idPanne;
     private String description;
     private LocalDate dateSignalement;
     private EtatPanne etatPanne;
 
-    @ManyToOne
-    @JoinColumn(name = "idEquipement", nullable = false)
-    private Equipement equipement;
 }
