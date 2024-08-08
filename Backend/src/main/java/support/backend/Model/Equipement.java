@@ -26,4 +26,7 @@ public class Equipement {
     @OneToMany(mappedBy = "equipement")
     private List<HistoriquePanne> historiquePannes;
 
+    @OneToMany(mappedBy = "equipement")
+    private List<Ticket> tickets;
+
 }
