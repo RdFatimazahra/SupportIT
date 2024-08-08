@@ -4,10 +4,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import support.backend.Model.*;
-import support.backend.Repository.EquipementRepository;
-import support.backend.Repository.PanneRepository;
-import support.backend.Repository.TicketRepository;
-import support.backend.Repository.UserRepository;
+import support.backend.Repository.*;
 import support.backend.dto.TicketDTO;
 import support.backend.mapper.TicketMapper;
 
@@ -27,6 +24,9 @@ public class TicketServiceImpl implements TicketService {
 
     @Autowired
     private PanneRepository panneRepository;
+
+    @Autowired
+    private TechnicienRepository technicienRepository;
 
     @Transactional
     public TicketDTO createTicket(TicketDTO ticketDTO, Utilisateur utilisateur) {
@@ -53,5 +53,26 @@ public class TicketServiceImpl implements TicketService {
         return TicketMapper.INSTANCE.ticketToTicketDTO(savedTicket);
     }
 
-}
+    @Override
 
+    public TicketDTO attribuerTicket(int idTicket, int idTechnicien) {
+        // Récupérer le ticket par son ID
+        Ticket ticket = ticketRepository.findById(idTicket)
+                .orElseThrow(() -> new RuntimeException("Ticket not found"));
+
+        // Récupérer le technicien par son ID
+        Technicien technicien = technicienRepository.findById(idTechnicien)
+                .orElseThrow(() -> new RuntimeException("Technicien not found"));
+
+        // Mettre à jour le statut du ticket et assigner le technicien
+        ticket.setEtatTicket(EtatTicket.ASSIGNE);
+        ticket.setTechnicien(technicien);
+
+        // Sauvegarder le ticket mis à jour
+        Ticket savedTicket = ticketRepository.save(ticket);
+
+        // Convertir l'entité Ticket en TicketDTO
+        return TicketMapper.INSTANCE.ticketToTicketDTO(savedTicket);
+
+    }
+}
