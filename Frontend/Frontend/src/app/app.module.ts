@@ -11,6 +11,7 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import {ReactiveFormsModule} from '@angular/forms'
 import {HttpClientModule} from '@angular/common/http';
+import { EquipmentListComponent } from './pages/admin/equipment-list/equipment-list.component';
 
 
 
@@ -23,6 +24,8 @@ import {HttpClientModule} from '@angular/common/http';
     SidebarComponent,
     NavbarComponent,
     FooterComponent,
+    EquipmentListComponent,
+    
 
   ],
   imports: [

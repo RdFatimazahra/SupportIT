@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/auth/Admin/equipements")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class EquipementController {
 
     @Autowired
@@ -22,7 +23,7 @@ public class EquipementController {
         return ResponseEntity.ok(createdEquipement);
     }
 
-    @GetMapping
+    @GetMapping("/afficher")
     public ResponseEntity<List<EquipementDTO>> getAllEquipements() {
         List<EquipementDTO> equipements = equipementService.getAllEquipements();
         return ResponseEntity.ok(equipements);
