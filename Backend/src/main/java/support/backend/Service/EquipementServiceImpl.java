@@ -53,5 +53,10 @@ public class EquipementServiceImpl implements EquipementService {
     public void deleteEquipement(int id) {
         equipementRepository.deleteById(id);
     }
+
+
+    public Long count() {
+       return equipementRepository.count();
+    }
 }
 
