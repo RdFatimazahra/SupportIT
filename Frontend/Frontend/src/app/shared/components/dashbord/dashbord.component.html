@@ -1,1 +1,13 @@
-<p>dashbord works!</p>
+<div class="dashboard-container">
+    <h2>Dashboard</h2>
+    
+    <!-- Correct usage of *ngIf -->
+    <div *ngIf="serCount !== undefined">
+      <p>Total Users: {{ serCount }}</p>
+    </div>
+    
+    <div *ngIf="serCount === undefined">
+      <p>Loading...</p>
+    </div>
+  </div>
+  
