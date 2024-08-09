@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit{
       (response : Jwt) => {
              const jwToken = response.token;
             localStorage.setItem('jwt', jwToken);
-           this.router.navigateByUrl("/dashbord")
+           this.router.navigateByUrl('/dashbord')
         }
     )
   }
