@@ -3,20 +3,19 @@
     <table class="table">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Name</th>
+          <th>Nom</th>
+          <th>Description</th>
           <th>Image</th>
-          <th>Status</th>
+          <th>Etat</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let equipment of equipmentList">
           <td>{{ equipment.nom }}</td>
           <td>{{ equipment.description }}</td>
-          <td>{{ equipment.image }}</td>
+          <td><img [src]="equipment.image" alt="Equipment image" style="max-width: 100px; max-height: 100px;"></td>
           <td>{{ equipment.etat }}</td>
         </tr>
       </tbody>
     </table>
   </div>
-  

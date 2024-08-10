@@ -1,6 +1,6 @@
 /* dashboard.component.scss */
 
-.dashboard-container {
+/*.dashboard-container {
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -17,4 +17,24 @@
   p {
     font-size: 18px;
     text-align: center;
+  } */
+
+  #sidebar {
+    height: 100vh;
+    padding-top: 20px;
   }
+  
+  #sidebar .nav-link {
+    font-size: 1.1rem;
+  }
+  
+  #sidebar .nav-link.active {
+    background-color: #0d6efd;
+    color: white;
+  }
+  
+  #sidebar .nav-link:hover {
+    background-color: #0056b3;
+    color: white;
+  }
+  
