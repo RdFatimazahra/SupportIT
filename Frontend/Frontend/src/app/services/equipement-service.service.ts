@@ -8,6 +8,9 @@ const BASE_URL  = ["http://localhost:8083/api/v1/auth/Admin/equipements/"]
   providedIn: 'root'
 })
 export class EquipmentService {
+  deleteEquipment(id: number): Observable<void> {
+    return this.http.delete<void>(`${BASE_URL}/equipments/${id}`);
+  }
 
   constructor(private http: HttpClient) { }
 
