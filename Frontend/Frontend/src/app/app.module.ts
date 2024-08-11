@@ -13,6 +13,8 @@ import {ReactiveFormsModule} from '@angular/forms'
 import {HttpClientModule} from '@angular/common/http';
 import { EquipmentListComponent } from './pages/admin/equipment-list/equipment-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddEquipmentDialogComponent } from './add-equipment-dialog/add-equipment-dialog.component';
+import { EditEquipmentDialogComponent } from './edit-equipment-dialog/edit-equipment-dialog.component';
 
 
 
@@ -26,6 +28,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavbarComponent,
     FooterComponent,
     EquipmentListComponent,
+    AddEquipmentDialogComponent,
+    EditEquipmentDialogComponent,
     
 
   ],
