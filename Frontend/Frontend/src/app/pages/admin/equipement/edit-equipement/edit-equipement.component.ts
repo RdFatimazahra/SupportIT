@@ -25,13 +25,12 @@ export class EditEquipementComponent {
   ) {}
 
   ngOnInit(): void {
-    this.idEquipement = +this.route.snapshot.paramMap.get('id')!;
-    console.log('Fetching equipment with ID:', this.idEquipement);
+    this.idEquipement = +this.route.snapshot.params['idEquipement']!;
+    console.log(this.idEquipement);
+    
     this.equipementService.getEquipementById(this.idEquipement).subscribe((data) => {
-      console.log('Data fetched:', data);
+      console.log('Fetched data:', data);
       this.equipement = data;
-    }, (error) => {
-      console.error('Error fetching equipment:', error);
     });
   }
   

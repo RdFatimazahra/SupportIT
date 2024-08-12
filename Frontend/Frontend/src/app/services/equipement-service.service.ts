@@ -29,7 +29,7 @@ export class EquipmentService {
   getEquipementById(idEquipement: number): Observable<Equipement> {
     const headers = this.createAuthorizationHeader();
 
-    return this.http.get<Equipement>(`${BASE_URL}/${idEquipement}`);
+    return this.http.get<Equipement>(`${BASE_URL}/${idEquipement}`, { headers });
   }
 
   getEquipmentList(): Observable<Equipement[]> {
