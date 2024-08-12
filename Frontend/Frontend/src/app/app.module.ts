@@ -16,6 +16,9 @@ import { EditEquipementComponent } from './pages/admin/equipement/edit-equipemen
 import { FormsModule } from '@angular/forms';
 import { AddEquipementComponent } from './pages/admin/equipement/add-equipement/add-equipement.component';
 import { EquipmentListComponent } from './pages/admin/equipment-list/equipment-list.component';
+import { PanneListComponent } from './pages/admin/panne/panne-list/panne-list.component';
+import { AddPanneComponent } from './pages/admin/panne/add-panne/add-panne.component';
+import { EditPanneComponent } from './pages/admin/panne/edit-panne/edit-panne.component';
 
 
 
@@ -32,6 +35,9 @@ import { EquipmentListComponent } from './pages/admin/equipment-list/equipment-l
     EquipmentListComponent,
     AddEquipementComponent,
     EditEquipementComponent,
+    PanneListComponent,
+    AddPanneComponent,
+    EditPanneComponent,
 
     
 
