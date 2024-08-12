@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/auth/Admin/pannes")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class PanneController {
 
     @Autowired
@@ -21,7 +22,7 @@ public class PanneController {
         return ResponseEntity.ok(createdPanne);
     }
 
-    @GetMapping
+    @GetMapping("/afficher")
     public ResponseEntity<List<PanneDTO>> getAllPannes() {
         List<PanneDTO> pannes = panneService.getAllPanne();
         return ResponseEntity.ok(pannes);

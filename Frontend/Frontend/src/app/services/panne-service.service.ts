@@ -4,7 +4,7 @@ import { Panne } from '../interfaces/Panne';
 import { Observable } from 'rxjs';
 
 
-const BASE_URL = "http://localhost:8083/api/v1/auth/Admin/pannes";
+const BASE_URL = ["http://localhost:8083/api/v1/auth/Admin/pannes"];
 @Injectable({
   providedIn: 'root'
 })
