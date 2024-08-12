@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EquipmentService } from 'src/app/services/equipement-service.service';
 import { Equipement } from 'src/app/interfaces/equipement';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class EquipmentListComponent implements OnInit {
 
   equipmentList: Equipement[] = [];
 
-  constructor(private equipmentService: EquipmentService, private dialog: MatDialog) {}
+  constructor(private equipmentService: EquipmentService, private dialog: MatDialog,  private router: Router) {}
 
   ngOnInit(): void {
     this.loadEquipment();
@@ -28,6 +29,10 @@ export class EquipmentListComponent implements OnInit {
         console.error('Error fetching equipment list', error);
       }
     );
+  }
+
+  updateEquipement(idEquipement: number): void {
+    this.router.navigate(['/edit', idEquipement]); // Redirige vers la page de mise à jour
   }
 
   deleteEquipement(id: number): void {

@@ -6,6 +6,7 @@ import { AuthGuard } from './auth.guard';
 import { AddEquipementComponent } from './pages/admin/equipement/add-equipement/add-equipement.component';
 import { EquipmentListComponent } from './pages/admin/equipment-list/equipment-list.component';
 import { MainContentComponent } from './shared/components/main-content/main-content.component';
+import { EditEquipementComponent } from './pages/admin/equipement/edit-equipement/edit-equipement.component';
 
 const routes: Routes = [
   {
@@ -14,13 +15,12 @@ const routes: Routes = [
       { path: '', component: MainContentComponent },  // Redirect to equipment-list by default
       { path: 'dashboard', component: DashbordComponent },
       {path: 'equipment-list', component: EquipmentListComponent},
-      { path: 'add', component: AddEquipementComponent },
-      { path: 'equipements', component: EquipmentListComponent},
+      {path: 'equipment-list/add', component: AddEquipementComponent },
+      {path: 'equipment-list/edit/:idEquipement', component: EditEquipementComponent},
     ]
   },
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },  // Redirect to login by default if no path is specified
-  { path: '**', redirectTo: '/login' }  // Wildcard route for a 404 page, can be adjusted based on your needs
+  { path: '', redirectTo: '/login', pathMatch: 'full' },  // Redirect to login by default if no path is specified // Wildcard route for a 404 page, can be adjusted based on your needs
 ];
 
 @NgModule({
