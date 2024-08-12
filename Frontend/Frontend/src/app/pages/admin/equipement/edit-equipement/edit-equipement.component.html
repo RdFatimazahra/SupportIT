@@ -1,1 +1,25 @@
-<p>edit-equipement works!</p>
+<div class="equipement-form">
+    <h2>Mettre à jour l'équipement</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nom">Nom de l'équipement</label>
+        <input type="text" id="nom" [(ngModel)]="equipement.nom" name="nom" class="form-control" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" [(ngModel)]="equipement.description" name="description" class="form-control" required></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="etat">État de l'équipement</label>
+        <select id="etat" [(ngModel)]="equipement.etat" name="etat" class="form-control" required>
+          <option [ngValue]="EtatEquipement.EN_SERVICE">En service</option>
+          <option [ngValue]="EtatEquipement.HORS_SERVICE">Hors service</option>
+        </select>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Mettre à jour</button>
+    </form>
+  </div>
+  

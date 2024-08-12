@@ -22,6 +22,15 @@ export class EquipmentService {
     return this.http.delete<void>(`${BASE_URL}/${id}`,{ headers });
   }
 
+  updateEquipement(equipement: Equipement, idEquipement: number): Observable<Equipement> {
+    const headers = this.createAuthorizationHeader();
+    return this.http.put<Equipement>(`${BASE_URL}/${idEquipement}`, equipement, { headers });
+  }
+  getEquipementById(idEquipement: number): Observable<Equipement> {
+    const headers = this.createAuthorizationHeader();
+
+    return this.http.get<Equipement>(`${BASE_URL}/${idEquipement}`);
+  }
 
   getEquipmentList(): Observable<Equipement[]> {
     const headers = this.createAuthorizationHeader();

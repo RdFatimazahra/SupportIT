@@ -26,7 +26,7 @@ export class AddEquipementComponent {
     this.equipementService.createEquipement(this.equipement).subscribe({
       next: (response) => {
         alert('Équipement créé avec succès');
-        this.router.navigate(['/dashboard/equipements']);
+        this.router.navigate(['dashboard/equipment-list']);
         // Réinitialiser le formulaire après la soumission ou naviguer vers une autre page
       },
       error: (error) => {
