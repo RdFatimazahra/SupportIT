@@ -3,21 +3,25 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { DashbordComponent } from './shared/components/dashbord/dashbord.component';
 import { AuthGuard } from './auth.guard';
+import { AddEquipementComponent } from './pages/admin/equipement/add-equipement/add-equipement.component';
 import { EquipmentListComponent } from './pages/admin/equipment-list/equipment-list.component';
+import { MainContentComponent } from './shared/components/main-content/main-content.component';
 
 const routes: Routes = [
-   // Default route to the login component
-   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  
-   // Route to the login component
-   { path: 'login', component: LoginComponent },
- 
-   // Route to the dashboard component
-   { path: 'dashbord', component: DashbordComponent},
-
-   { path: 'equipment-list', component: EquipmentListComponent },
-
- ];
+  {
+    path: 'dashboard',component: DashbordComponent,
+    children: [
+      { path: '', component: MainContentComponent },  // Redirect to equipment-list by default
+      { path: 'dashboard', component: DashbordComponent },
+      {path: 'equipment-list', component: EquipmentListComponent},
+      { path: 'add', component: AddEquipementComponent },
+      { path: 'equipements', component: EquipmentListComponent},
+    ]
+  },
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },  // Redirect to login by default if no path is specified
+  { path: '**', redirectTo: '/login' }  // Wildcard route for a 404 page, can be adjusted based on your needs
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

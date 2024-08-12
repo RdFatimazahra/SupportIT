@@ -16,7 +16,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/equipment-list" routerLinkActive="active">
+        <a class="nav-link" routerLink="/dashboard/equipment-list" routerLinkActive="active">
           <i class="bi bi-tools"></i> Équipements
         </a>
       </li>
@@ -33,42 +33,16 @@
     </ul>
   </nav>
 
-  <!-- Main content -->
   <main class="content">
     <header class="content-header">
       <h1>Welcome to the Dashboard</h1>
     </header>
-    <div class="content-body">
-      <!-- Add your main content here -->
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Équipements</h5>
-          <button (click)="openAddEquipmentModal()" class="btn btn-primary mb-3">Ajouter un Équipement</button>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>État</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let equipment of equipmentList">
-                <td>{{ equipment.nom }}</td>
-                <td>{{ equipment.description }}</td>
-                <td><img [src]="equipment.image" alt="Image de l'équipement" style="max-width: 100px; max-height: 100px;"></td>
-                <td>{{ equipment.etat }}</td>
-                <td>
-                  <button (click)="openEditEquipmentModal(equipment)" class="btn btn-warning btn-sm">Modifier</button>
-                  <button (click)="deleteEquipment(equipment.id)" class="btn btn-danger btn-sm">Supprimer</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+   
+
+    <div>
+      
+<router-outlet></router-outlet>
     </div>
+    
   </main>
 </div>

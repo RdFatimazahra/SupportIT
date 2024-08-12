@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EquipmentService } from 'src/app/services/equipement-service.service';
-import { equipement } from 'src/app/interfaces/equipement';
+import { Equipement } from 'src/app/interfaces/equipement';
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-equipment-list',
@@ -9,9 +11,9 @@ import { equipement } from 'src/app/interfaces/equipement';
 })
 export class EquipmentListComponent implements OnInit {
 
-  equipmentList: equipement[] = [];
+  equipmentList: Equipement[] = [];
 
-  constructor(private equipmentService: EquipmentService) {}
+  constructor(private equipmentService: EquipmentService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.loadEquipment();
@@ -19,12 +21,18 @@ export class EquipmentListComponent implements OnInit {
 
   private loadEquipment(): void {
     this.equipmentService.getEquipmentList().subscribe(
-      (data: equipement[]) => {
+      (data: Equipement[]) => {
         this.equipmentList = data;
       },
       (error) => {
         console.error('Error fetching equipment list', error);
       }
     );
+  }
+
+  deleteEquipment(id: number) {
+    this.equipmentService.deleteEquipment(id).subscribe(() => {
+      this.loadEquipment(); // Reload the list after deletion
+    });
   }
 }
