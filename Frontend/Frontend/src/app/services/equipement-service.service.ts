@@ -9,6 +9,8 @@ const BASE_URL  = ["http://localhost:8083/api/v1/auth/Admin/equipements"]
 })
 export class EquipmentService {
 
+  constructor(private http: HttpClient) { }
+
 
   createEquipement(equipement: Equipement): Observable<Equipement> {
     const headers = this.createAuthorizationHeader();
@@ -16,10 +18,9 @@ export class EquipmentService {
   }
 
   deleteEquipment(id: number): Observable<void> {
-    return this.http.delete<void>(`${BASE_URL}/equipments/${id}`);
+    const headers = this.createAuthorizationHeader();
+    return this.http.delete<void>(`${BASE_URL}/${id}`,{ headers });
   }
-
-  constructor(private http: HttpClient) { }
 
 
   getEquipmentList(): Observable<Equipement[]> {

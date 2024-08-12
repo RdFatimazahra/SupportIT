@@ -19,7 +19,7 @@
         <td>{{ equipment.etat }}</td>
         <td>
           <button class="btn btn-warning btn-sm">Modifier</button>
-          <button class="btn btn-danger btn-sm">Supprimer</button>
+          <button (click)="equipment.idEquipement ? deleteEquipement(equipment.idEquipement) : null" class="btn btn-danger btn-sm">Supprimer</button>
         </td>
       </tr>
     </tbody>

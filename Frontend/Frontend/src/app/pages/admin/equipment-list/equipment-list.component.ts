@@ -30,9 +30,17 @@ export class EquipmentListComponent implements OnInit {
     );
   }
 
-  deleteEquipment(id: number) {
-    this.equipmentService.deleteEquipment(id).subscribe(() => {
-      this.loadEquipment(); // Reload the list after deletion
-    });
+  deleteEquipement(id: number): void {
+    this.equipmentService.deleteEquipment(id).subscribe(
+      () => {
+        this.equipmentList = this.equipmentList.filter(equipmentList => equipmentList.idEquipement !== id);
+        console.log('User deleted successfully');
+      },
+      (error) => {
+        console.error('Error deleting equipment', error);
+      }
+    );
   }
 }
+
+
