@@ -1,8 +1,12 @@
-export interface equipement {
+export enum EtatEquipement {
+    EN_SERVICE = 'EN_SERVICE',
+    HORS_SERVICE = 'HORS_SERVICE'
+  }
+  
+  export interface Equipement {
+    idEquipement?: number;
+    nom: string;
     description: string;
-    nom:string;
-    image: string;
-    etat: string;
-
-}
-
+    image:string;
+    etat: EtatEquipement;
+  }

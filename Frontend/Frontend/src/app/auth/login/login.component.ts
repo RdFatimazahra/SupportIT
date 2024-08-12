@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Jwt } from 'src/app/interfaces/Jwt';
 import { AuthenticateService } from 'src/app/services/authenticate.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit{
       (response : Jwt) => {
              const jwToken = response.token;
             localStorage.setItem('jwt', jwToken);
-           this.router.navigateByUrl('/dashbord')
+           this.router.navigateByUrl('/dashboard')
         }
     )
   }

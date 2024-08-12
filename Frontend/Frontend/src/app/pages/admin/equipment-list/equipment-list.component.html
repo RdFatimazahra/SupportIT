@@ -1,21 +1,27 @@
 <div class="container">
-    <h2>Equipment List</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Nom</th>
-          <th>Description</th>
-          <th>Image</th>
-          <th>Etat</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let equipment of equipmentList">
-          <td>{{ equipment.nom }}</td>
-          <td>{{ equipment.description }}</td>
-          <td><img [src]="equipment.image" alt="Equipment image" style="max-width: 100px; max-height: 100px;"></td>
-          <td>{{ equipment.etat }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <h2>Liste des Équipements</h2>
+  <button  class="btn btn-primary mb-3" routerLink="/add">Ajouter un Équipement</button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>État</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let equipment of equipmentList">
+        <td>{{ equipment.nom }}</td>
+        <td>{{ equipment.image }}</td>
+        <td>{{ equipment.description }}</td>
+        <td>{{ equipment.etat }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm">Modifier</button>
+          <button class="btn btn-danger btn-sm">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

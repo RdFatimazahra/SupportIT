@@ -1,13 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { equipement } from '../interfaces/equipement';
+import { Equipement } from '../interfaces/equipement';
 
-const BASE_URL  = ["http://localhost:8083/api/v1/auth/Admin/equipements/"]
+const BASE_URL  = ["http://localhost:8083/api/v1/auth/Admin/equipements"]
 @Injectable({
   providedIn: 'root'
 })
 export class EquipmentService {
+
+
+  createEquipement(equipement: Equipement): Observable<Equipement> {
+    const headers = this.createAuthorizationHeader();
+    return this.http.post<Equipement>(`${BASE_URL}`,equipement,{ headers });
+  }
+
   deleteEquipment(id: number): Observable<void> {
     return this.http.delete<void>(`${BASE_URL}/equipments/${id}`);
   }
@@ -15,9 +22,9 @@ export class EquipmentService {
   constructor(private http: HttpClient) { }
 
 
-  getEquipmentList(): Observable<equipement[]> {
+  getEquipmentList(): Observable<Equipement[]> {
     const headers = this.createAuthorizationHeader();
-    return this.http.get<equipement[]>(BASE_URL + 'afficher', { headers });
+    return this.http.get<Equipement[]>(BASE_URL + '/afficher', { headers });
   }
 
   private createAuthorizationHeader(): HttpHeaders | undefined {
