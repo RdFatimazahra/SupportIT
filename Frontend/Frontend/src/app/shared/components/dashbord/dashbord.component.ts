@@ -14,6 +14,11 @@ export class DashbordComponent {
     private service: AuthenticateService
   ){}
 
+  onLogout(): void {
+    this.service.logout();
+  }
+  
+
   ngOnInit(): void {
     
   }
