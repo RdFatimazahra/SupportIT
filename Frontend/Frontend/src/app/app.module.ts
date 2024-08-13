@@ -7,25 +7,26 @@ import { MainContentComponent } from './shared/components/main-content/main-cont
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashbordComponent } from './shared/components/dashbord/dashbord.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EditEquipementComponent } from './pages/admin/equipement/edit-equipement/edit-equipement.component';
-import { FormsModule } from '@angular/forms';
 import { AddEquipementComponent } from './pages/admin/equipement/add-equipement/add-equipement.component';
 import { EquipmentListComponent } from './pages/admin/equipment-list/equipment-list.component';
 import { AddPanneComponent } from './pages/admin/panne/add-panne/add-panne.component';
 import { EditPanneComponent } from './pages/admin/panne/edit-panne/edit-panne.component';
 import { PanneListComponent } from './pages/admin/panne/panne-list/panne-list.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/auth.interceptor';
 import { TechDashbordComponent } from './pages/technicien/tech-dashbord/tech-dashbord.component';
 import { UserDashbordComponent } from './pages/user/user-dashbord/user-dashbord.component';
+import { JwtModule, JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
-
-
+// Function to retrieve the token
+export function tokenGetter() {
+  return localStorage.getItem('access_token'); // Adjust this according to how you're storing the token
+}
 
 @NgModule({
   declarations: [
@@ -44,9 +45,6 @@ import { UserDashbordComponent } from './pages/user/user-dashbord/user-dashbord.
     EditPanneComponent,
     TechDashbordComponent,
     UserDashbordComponent,
-
-    
-
   ],
   imports: [
     MatDialogModule,
@@ -56,14 +54,22 @@ import { UserDashbordComponent } from './pages/user/user-dashbord/user-dashbord.
     ReactiveFormsModule,
     BrowserAnimationsModule,
     FormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['your-api-domain.com'], // Replace with your API domain
+        disallowedRoutes: ['http://example.com/auth/'], // Replace with routes you want to skip
+      },
+    }),
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
+    JwtHelperService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

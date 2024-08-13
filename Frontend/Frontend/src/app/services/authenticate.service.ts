@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Jwt } from '../interfaces/Jwt';
 import { Observable } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 
 const BASE_URL  = ["http://localhost:8083/api/v1/auth/"]
 
@@ -10,40 +12,41 @@ const BASE_URL  = ["http://localhost:8083/api/v1/auth/"]
 })
 export class AuthenticateService {
 
-  constructor( private http : HttpClient) { }
+  private readonly TOKEN_KEY = 'jwt_token'
 
-  register(signRequest:any): Observable<Jwt>{
-    return this.http.post<Jwt>(BASE_URL+'register', signRequest)
+  constructor(private http: HttpClient,private jwtHelper:JwtHelperService) { }
 
+  register(signRequest: any): Observable<Jwt> {
+    return this.http.post<Jwt>(BASE_URL + 'register', signRequest);
   }
 
-  login(loginRequest:any): Observable<Jwt>{
-    return this.http.post<Jwt>(BASE_URL+'authenticate', loginRequest)
-
+  login(loginRequest: any): Observable<Jwt> {
+    return this.http.post<Jwt>(BASE_URL + 'authenticate', loginRequest);
   }
 
   getUserCount(): Observable<number> {
-    const headers = this.createAuthorizationHeader();
-    return this.http.get<number>(BASE_URL + 'Admin/count', { headers });
-  }
-
-  private createAuthorizationHeader(): HttpHeaders | undefined {
-    const jwtToken = localStorage.getItem('jwt');
-    if (jwtToken) {
-      console.log("JWT token found in local storage", jwtToken);
-      return new HttpHeaders().set("Authorization", "Bearer " + jwtToken);
-    } else {
-      console.log("JWT token not found in local storage");
-      return undefined;
-    }
+    return this.http.get<number>(BASE_URL + 'Admin/count');
   }
 
   getToken(): string | null {
-    return localStorage.getItem('authToken');
+    return localStorage.getItem('jwt');
   }
 
   isLoggedIn(): boolean {
     return !!this.getToken();
   }
 
+
+  getUserRole(): string {
+    const token = localStorage.getItem(this.TOKEN_KEY);
+    if (token) {
+      const decodedToken = this.jwtHelper.decodeToken(token);
+      return decodedToken.role; // Assuming the role is stored in the JWT
+    }
+    return '';
+  }
+
+
+
 }
+
