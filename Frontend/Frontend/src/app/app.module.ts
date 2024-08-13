@@ -19,6 +19,8 @@ import { EquipmentListComponent } from './pages/admin/equipment-list/equipment-l
 import { AddPanneComponent } from './pages/admin/panne/add-panne/add-panne.component';
 import { EditPanneComponent } from './pages/admin/panne/edit-panne/edit-panne.component';
 import { PanneListComponent } from './pages/admin/panne/panne-list/panne-list.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './core/auth.interceptor';
 
 
 
@@ -51,7 +53,13 @@ import { PanneListComponent } from './pages/admin/panne/panne-list/panne-list.co
     BrowserAnimationsModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
