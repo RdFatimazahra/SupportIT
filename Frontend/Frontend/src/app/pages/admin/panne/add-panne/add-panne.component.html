@@ -1,1 +1,17 @@
-<p>add-panne works!</p>
+<div class="container">
+    <h2>Créer une nouvelle panne</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="description">Description de la panne</label>
+        <input type="text" id="description" class="form-control" [(ngModel)]="panne.description" name="description" required>
+      </div>
+      <div class="form-group">
+        <label for="etat">État de la panne</label>
+        <select id="etat" class="form-control" [(ngModel)]="panne.etatPanne" name="etat" required>
+          <option *ngFor="let etat of etats" [value]="etat">{{ etat }}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Créer</button>
+    </form>
+  </div>
+  

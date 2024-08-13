@@ -9,7 +9,7 @@ export enum EtatPanne {
 
 
 export interface Panne {
-    idPanne : number;
+    idPanne?: number;
     description : string;
     etatPanne : EtatPanne;
 }

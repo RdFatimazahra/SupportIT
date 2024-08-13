@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { PanneServiceService } from 'src/app/services/panne-service.service';
+import { Panne, EtatPanne } from 'src/app/interfaces/Panne';
 
 @Component({
   selector: 'app-add-panne',
@@ -7,4 +10,25 @@ import { Component } from '@angular/core';
 })
 export class AddPanneComponent {
 
+  panne: Panne = {
+    idPanne: 0, // Id should be 0 or undefined if not used in creation
+    description: '',
+    etatPanne: EtatPanne.SIGNALEE // Use the default state if needed
+  };
+
+  etats = Object.values(EtatPanne).filter(value => typeof value === 'string'); // Filter to get only string values
+
+  constructor(private panneService: PanneServiceService, private router: Router) { }
+
+  onSubmit() {
+    this.panneService.createPanne(this.panne).subscribe({
+      next: (response) => {
+        alert('Panne créée avec succès');
+        this.router.navigate(['dashboard/panne-list']);
+      },
+      error: (error) => {
+        console.error('Erreur lors de la création de la panne', error);
+      }
+    });
+  }
 }
