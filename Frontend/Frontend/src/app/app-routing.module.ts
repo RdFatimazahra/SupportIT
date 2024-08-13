@@ -8,6 +8,7 @@ import { EquipmentListComponent } from './pages/admin/equipment-list/equipment-l
 import { MainContentComponent } from './shared/components/main-content/main-content.component';
 import { EditEquipementComponent } from './pages/admin/equipement/edit-equipement/edit-equipement.component';
 import { PanneListComponent } from './pages/admin/panne/panne-list/panne-list.component';
+import { AddPanneComponent } from './pages/admin/panne/add-panne/add-panne.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
       {path: 'equipment-list/add', component: AddEquipementComponent },
       {path: 'equipment-list/edit/:idEquipement', component: EditEquipementComponent},
       { path: 'panne-list', component: PanneListComponent },
+      {path:'panne-list/add', component: AddPanneComponent },
     ]
   },
   { path: 'login', component: LoginComponent },
