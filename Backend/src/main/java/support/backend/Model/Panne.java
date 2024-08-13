@@ -21,8 +21,6 @@ public class Panne {
     private LocalDate dateSignalement;
     private EtatPanne etatPanne;
 
-    @OneToMany(mappedBy = "panne")
-    private List<HistoriquePanne> historiquePannes;
 
     @OneToMany(mappedBy = "panne")
     private List<Ticket> tickets;

@@ -5,7 +5,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import support.backend.Model.Admin;
 import support.backend.Model.Role;
+import support.backend.Model.Technicien;
 import support.backend.Model.Utilisateur;
 import support.backend.Repository.UserRepository;
 import support.backend.config.JwtService;
@@ -27,12 +29,12 @@ public class AuthenticationService {
 
     //RegisterUser :
     public AuthenticationResponse register(RegisterRequest request) {
-        var user = Utilisateur.builder()
-                .nom(request.getNom())
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.USER)
-                .build();
+        var user = new Utilisateur();
+            user.setNom(request.getNom());
+            user.setEmail(request.getEmail());
+            user.setPassword(passwordEncoder.encode(request.getPassword()));
+            user.setRole(Role.USER);
+
         userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
@@ -44,14 +46,14 @@ public class AuthenticationService {
 
     //RegisterTechnicien :
     public AuthenticationResponse registerTech(RegisterRequest request) {
-        var user = Utilisateur.builder()
-                .nom(request.getNom())
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.TECHNICIEN)
-                .build();
-        userRepository.save(user);
-        var jwtToken = jwtService.generateToken(user);
+        var tech = new Technicien();
+            tech.setNom(request.getNom());
+                tech.setEmail(request.getEmail());
+                tech.setPassword(passwordEncoder.encode(request.getPassword()));
+                tech.setRole(Role.TECHNICIEN);
+
+        userRepository.save(tech);
+        var jwtToken = jwtService.generateToken(tech);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
@@ -61,14 +63,14 @@ public class AuthenticationService {
 
     //Register Admin ;
     public AuthenticationResponse registerAdmin(RegisterRequest request) {
-        var user = Utilisateur.builder()
-                .nom(request.getNom())
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.ADMIN)
-                .build();
-        userRepository.save(user);
-        var jwtToken = jwtService.generateToken(user);
+        var admin = new Admin();
+                admin.setNom(request.getNom());
+                admin.setEmail(request.getEmail());
+                admin.setPassword(passwordEncoder.encode(request.getPassword()));
+                admin.setRole(Role.ADMIN);
+
+        userRepository.save(admin);
+        var jwtToken = jwtService.generateToken(admin);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();

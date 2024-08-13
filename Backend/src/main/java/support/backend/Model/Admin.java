@@ -7,8 +7,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Admin extends Personne {
 
-    public Admin(String nom, String email, String password) {
-        super(nom, email, password, Role.ADMIN);
-    }
 }
 

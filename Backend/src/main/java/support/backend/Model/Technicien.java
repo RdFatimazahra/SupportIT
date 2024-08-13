@@ -11,9 +11,6 @@ import java.util.List;
 
 public class Technicien extends Personne {
 
-    public Technicien(String nom, String email, String password) {
-        super(nom, email, password, Role.TECHNICIEN);
-    }
 
     @OneToMany(mappedBy = "technicien")
     private  List<Ticket> tickets;
