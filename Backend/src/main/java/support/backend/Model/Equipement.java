@@ -23,8 +23,8 @@ public class Equipement {
     private String image;
     private EtatEquipement etat;
 
-    @OneToMany(mappedBy = "equipement")
-    private List<HistoriquePanne> historiquePannes;
+//    @OneToMany(mappedBy = "equipement")
+//    private List<HistoriquePanne> historiquePannes;
 
     @OneToMany(mappedBy = "equipement")
     private List<Ticket> tickets;
