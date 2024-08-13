@@ -21,6 +21,8 @@ import { EditPanneComponent } from './pages/admin/panne/edit-panne/edit-panne.co
 import { PanneListComponent } from './pages/admin/panne/panne-list/panne-list.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/auth.interceptor';
+import { TechDashbordComponent } from './pages/technicien/tech-dashbord/tech-dashbord.component';
+import { UserDashbordComponent } from './pages/user/user-dashbord/user-dashbord.component';
 
 
 
@@ -40,6 +42,8 @@ import { AuthInterceptor } from './core/auth.interceptor';
     PanneListComponent,
     AddPanneComponent,
     EditPanneComponent,
+    TechDashbordComponent,
+    UserDashbordComponent,
 
     
 
