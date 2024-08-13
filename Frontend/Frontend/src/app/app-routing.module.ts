@@ -11,6 +11,8 @@ import { PanneListComponent } from './pages/admin/panne/panne-list/panne-list.co
 import { AddPanneComponent } from './pages/admin/panne/add-panne/add-panne.component';
 import { UserDashbordComponent } from './pages/user/user-dashbord/user-dashbord.component';
 import { TechDashbordComponent } from './pages/technicien/tech-dashbord/tech-dashbord.component';
+import { AddUserComponent } from './pages/admin/add-user/add-user.component';
+import { ListUserComponent } from './pages/admin/list-user/list-user.component';
 
 const routes: Routes = [
   {
@@ -25,6 +27,8 @@ const routes: Routes = [
       {path:'panne-list/add', component: AddPanneComponent },
       { path: 'user-dashboard', component: UserDashbordComponent },
       { path: 'technician-dashboard', component: TechDashbordComponent },
+      { path: 'list-user/register', component:AddUserComponent },
+      {path: 'list-user', component:ListUserComponent}
       
     ]
   },
