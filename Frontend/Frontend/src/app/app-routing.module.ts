@@ -9,6 +9,7 @@ import { MainContentComponent } from './shared/components/main-content/main-cont
 import { EditEquipementComponent } from './pages/admin/equipement/edit-equipement/edit-equipement.component';
 import { PanneListComponent } from './pages/admin/panne/panne-list/panne-list.component';
 import { AddPanneComponent } from './pages/admin/panne/add-panne/add-panne.component';
+import { EditPanneComponent } from './pages/admin/panne/edit-panne/edit-panne.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
       {path: 'equipment-list/edit/:idEquipement', component: EditEquipementComponent},
       { path: 'panne-list', component: PanneListComponent },
       {path:'panne-list/add', component: AddPanneComponent },
+      {path:'panne-list/edit/:idPanne', component: EditPanneComponent}
     ]
   },
   { path: 'login', component: LoginComponent },

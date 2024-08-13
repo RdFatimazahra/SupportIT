@@ -11,7 +11,6 @@ import { Panne, EtatPanne } from 'src/app/interfaces/Panne';
 export class AddPanneComponent {
 
   panne: Panne = {
-    idPanne: 0, // Id should be 0 or undefined if not used in creation
     description: '',
     etatPanne: EtatPanne.SIGNALEE // Use the default state if needed
   };

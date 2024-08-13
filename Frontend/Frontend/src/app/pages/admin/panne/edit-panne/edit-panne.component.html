@@ -1,1 +1,24 @@
-<p>edit-panne works!</p>
+<div *ngIf="panne">
+    <div class="panne-form">
+      <h2>Mettre à jour la panne</h2>
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="description">Description de la panne</label>
+          <textarea id="description" [(ngModel)]="panne.description" name="description" class="form-control" required></textarea>
+        </div>
+  
+        <div class="form-group">
+          <label for="etat">État de la panne</label>
+          <select id="etat" [(ngModel)]="panne.etatPanne" name="etat" class="form-control" required>
+            <option [ngValue]="EtatPanne.SIGNALEE">Signalée</option>
+            <option [ngValue]="EtatPanne.EN_COURS">En cours</option>
+            <option [ngValue]="EtatPanne.RESOLUE">Résolue</option>
+            <option [ngValue]="EtatPanne.NON_REPARABLE">Non Réparable</option>
+          </select>
+        </div>
+  
+        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+      </form>
+    </div>
+  </div>
+  
