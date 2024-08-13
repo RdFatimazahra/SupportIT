@@ -11,7 +11,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/users" routerLinkActive="active">
+        <a class="nav-link" routerLink="list-user" routerLinkActive="active">
           <i class="bi bi-people"></i> Users
         </a>
       </li>
@@ -30,6 +30,9 @@
           <i class="bi bi-ticket"></i> Tickets
         </a>
       </li>
+      <button class="btn btn-danger" (click)="onLogout()">
+        <i class="bi bi-box-arrow-right"></i> Logout
+      </button>
     </ul>
   </nav>
 

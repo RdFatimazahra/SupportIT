@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Jwt } from '../interfaces/Jwt';
 import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
+import { users } from '../interfaces/users';
 
 
 const BASE_URL  = ["http://localhost:8083/api/v1/auth/"]
@@ -14,10 +16,10 @@ export class AuthenticateService {
 
   private readonly TOKEN_KEY = 'jwt_token'
 
-  constructor(private http: HttpClient,private jwtHelper:JwtHelperService) { }
+  constructor(private http: HttpClient,private jwtHelper:JwtHelperService,  private router: Router) { }
 
   register(signRequest: any): Observable<Jwt> {
-    return this.http.post<Jwt>(BASE_URL + 'register', signRequest);
+    return this.http.post<Jwt>(BASE_URL + 'Admin/register', signRequest);
   }
 
   login(loginRequest: any): Observable<Jwt> {
@@ -37,6 +39,10 @@ export class AuthenticateService {
   }
 
 
+  getAllUser(): Observable<users[]> {
+    return this.http.get<users[]>(`${BASE_URL}Admin/AllUser`);
+  }
+
   getUserRole(): string {
     const token = localStorage.getItem(this.TOKEN_KEY);
     if (token) {
@@ -46,6 +52,10 @@ export class AuthenticateService {
     return '';
   }
 
+  logout(): void {
+    localStorage.removeItem(this.TOKEN_KEY);
+    this.router.navigate(['/login']);  // Redirect to login page after logout
+  }
 
 
 }

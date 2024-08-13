@@ -22,6 +22,8 @@ import { AuthInterceptor } from './core/auth.interceptor';
 import { TechDashbordComponent } from './pages/technicien/tech-dashbord/tech-dashbord.component';
 import { UserDashbordComponent } from './pages/user/user-dashbord/user-dashbord.component';
 import { JwtModule, JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { AddUserComponent } from './pages/admin/add-user/add-user.component';
+import { ListUserComponent } from './pages/admin/list-user/list-user.component';
 
 // Function to retrieve the token
 export function tokenGetter() {
@@ -45,6 +47,8 @@ export function tokenGetter() {
     EditPanneComponent,
     TechDashbordComponent,
     UserDashbordComponent,
+    AddUserComponent,
+    ListUserComponent,
   ],
   imports: [
     MatDialogModule,
