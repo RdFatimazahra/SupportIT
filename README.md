@@ -7,3 +7,5 @@ Voila la conception UML :
 <h3>Diagramme de classe :</h3>
 <img width="544" alt="image" src="https://github.com/user-attachments/assets/e29efb20-0eec-4860-86b6-a6afd38fb27a">
 <h3>Diagramme de séquence :</h3>
+<img width="549" alt="image" src="https://github.com/user-attachments/assets/f7eccad4-bdef-44c0-9769-feb1f86b5763">
+
