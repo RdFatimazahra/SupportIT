@@ -9,7 +9,9 @@ import support.backend.Model.Admin;
 import support.backend.Model.Role;
 import support.backend.Model.Technicien;
 import support.backend.Model.Utilisateur;
+import support.backend.Repository.TechnicienRepository;
 import support.backend.Repository.UserRepository;
+import support.backend.Repository.UtilisateurRepository;
 import support.backend.config.JwtService;
 
 import java.util.List;
@@ -20,6 +22,10 @@ public class AuthenticationService {
 
 
     private final UserRepository userRepository;
+
+    private final UtilisateurRepository utilisateurRepository;
+
+    private  final TechnicienRepository technicienRepository;
 
     private final PasswordEncoder passwordEncoder;
 
@@ -94,6 +100,14 @@ public class AuthenticationService {
                 .build();
 
 
+    }
+
+    public List<Utilisateur> getAllUsers() {
+        return  utilisateurRepository.findAll();
+    }
+
+    public  List<Technicien> getAllTechniciens() {
+        return technicienRepository.findAll();
     }
 
 

@@ -4,6 +4,10 @@ package support.backend.auth;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import support.backend.Model.Technicien;
+import support.backend.Model.Utilisateur;
+
+import java.util.List;
 
 
 @RestController
@@ -42,6 +46,16 @@ public class AuthenticationController {
     ) {
         return ResponseEntity.ok(authenticationService.authenticate(request));
 
+    }
+
+    @GetMapping("Admin/AllUsers")
+    public List<Utilisateur>getAllUsers() {
+        return authenticationService.getAllUsers();
+    }
+
+    @GetMapping("Admin/AllTech")
+    public List<Technicien>getAllTech() {
+        return authenticationService.getAllTechniciens();
     }
 
 
