@@ -1,5 +1,5 @@
 # SupportIT
-SupportIT est une application qui fait la gestion des équipements informatiques.
+<p> IT support App est une application de gestion des ressources informatiques . Cette application est pour but de faciliter la gestion des équipements informatiques au sein d'une organisation, ainsi que de fournir un suivi efficace des pannes et des tickets de support. </p>
 
 Voila la conception UML : 
 <h3>Diagramme de ccas d'utilisation :</h3>
