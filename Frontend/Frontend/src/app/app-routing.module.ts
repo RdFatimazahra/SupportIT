@@ -13,6 +13,8 @@ import { UserDashbordComponent } from './pages/user/user-dashbord/user-dashbord.
 import { TechDashbordComponent } from './pages/technicien/tech-dashbord/tech-dashbord.component';
 import { AddUserComponent } from './pages/admin/add-user/add-user.component';
 import { ListUserComponent } from './pages/admin/list-user/list-user.component';
+import { TechListComponent } from './pages/admin/tech-list/tech-list.component';
+import { AddTechComponent } from './pages/admin/add-tech/add-tech.component';
 
 const routes: Routes = [
   {
@@ -28,7 +30,9 @@ const routes: Routes = [
       { path: 'user-dashboard', component: UserDashbordComponent },
       { path: 'technician-dashboard', component: TechDashbordComponent },
       { path: 'list-user/register', component:AddUserComponent },
-      {path: 'list-user', component:ListUserComponent}
+      {path: 'list-user', component:ListUserComponent},
+      {path: 'tech-list', component:TechListComponent},
+      {path:'tech-list/add-tech', component:AddTechComponent},
       
     ]
   },
