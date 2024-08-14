@@ -1,0 +1,18 @@
+<div class="user-container">
+    <button class="add-account-btn"><a routerLink="add-tech">Register</a></button>
+    <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let technicien of technicien">
+          <td>{{ technicien.nom }}</td>
+          <td>{{ technicien.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

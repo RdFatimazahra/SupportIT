@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { users } from '../interfaces/users';
+import { Technicien } from '../interfaces/Technicien';
 
 
 const BASE_URL  = ["http://localhost:8083/api/v1/auth/"]
@@ -42,6 +43,10 @@ export class AuthenticateService {
   getAllUser(): Observable<users[]> {
     return this.http.get<users[]>(`${BASE_URL}Admin/AllUser`);
   }
+
+  getAllTechniciens(): Observable<Technicien[]> {
+    return this.http.get<Technicien[]>(`${BASE_URL}Admin/AllTech`);
+}
 
   getUserRole(): string {
     const token = localStorage.getItem(this.TOKEN_KEY);
